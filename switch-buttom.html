@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../move-object/objects-master/script.js"></script>
+</head>
+<body>
+<script>
+
+     let SwitchButton = function () {
+         this.switchOn = function () {
+            return this.status = true ;
+         };
+         this.switchOff = function () {
+             this.status = false;
+         }
+     };
+     let ElectricLamp =function () {
+         this.light = function () {
+             if (this.status) {
+                 alert("Lighting");
+             } else {
+                 alert("not lighting");
+             }
+         };
+         this.turnOn = function (switchButton) {
+             this.status = switchButton.switchOn();
+         };
+         this.turnOff = function (switchButton) {
+             this.status = switchButton.switchOff();
+         };
+     };
+
+     let switchButton = new SwitchButton();
+     let electricLamp = new ElectricLamp();
+
+     for (i = 1; i <= 10; i++) {
+         switchButton.switchOn();
+         electricLamp.turnOn(switchButton);
+         electricLamp.light();
+
+         switchButton.switchOff();
+         electricLamp.turnOff(switchButton);
+         electricLamp.light();
+     }
+</script>
+</body>
+</html>
